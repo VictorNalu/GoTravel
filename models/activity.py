@@ -5,14 +5,6 @@ import sqlalchemy
 from sqlalchemy import Column, String, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
 
-
-import models
-from models.base_model import BaseModel, Base
-from os import getenv
-import sqlalchemy
-from sqlalchemy import Column, String, DateTime, ForeignKey
-from sqlalchemy.orm import relationship
-
 class Activity(BaseModel, Base):
     """Representation of an activity"""
     if models.storage_t == 'db':

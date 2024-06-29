@@ -30,7 +30,7 @@ class Itinerary(BaseModel, Base):
 
     def __init__(self, *args, **kwargs):
         """initializes itinerary"""
-        super().__init__(i*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     def add_destination(self, destination):
         """Add a destination to the itinerary"""
