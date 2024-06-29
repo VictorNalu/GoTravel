@@ -9,11 +9,12 @@ from models.activity import Activity
 from models.base_model import BaseModel
 from models.itinerary import Itinerary
 from models.accommodation import Accommodation
+from models.destination import Destination
 from models.user import User
 from hashlib import md5
 
-classes = {"Accommodation": Accommodation, "BaseModel": BaseModel, "Itinerary": Itinerary,
-            "Activity": Activity, "User": User}
+classes = {"Destination": Destination, "Accommodation": Accommodation, "BaseModel": BaseModel,
+            "Itinerary": Itinerary, "Activity": Activity, "User": User}
 
 
 class FileStorage:

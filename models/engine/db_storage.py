@@ -8,15 +8,15 @@ from models.activity import Activity
 from models.base_model import BaseModel, Base
 from models.itinerary import Itinerary
 from models.accomodation import Accomodation
+from models.destination import Destination
 from models.user import User
 from os import getenv
 import sqlalchemy
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 
-classes = {"Amenity": Amenity, "City": City,
-           "Place": Place, "Review": Review, "State": State, "User": User}
-
+classes = {"Destination": Destination, "Accommodation": Accommodation, "BaseModel": BaseModel,
+            "Itinerary": Itinerary, "Activity": Activity, "User": User}
 
 class DBStorage:
     """interaacts with the MySQL database"""

@@ -9,10 +9,11 @@ from models.base_model import BaseModel
 from models.itinerary import Itinerary
 from models.accommodation import Accommodation
 from models.user import User
+from models.destination import Destination
 import shlex  # for splitting the line along spaces except in double quotes
 
-classes = {"Accommodation": Accommodation, "BaseModel": BaseModel, "Itinerary": Itinerary,
-            "Activity": Activity, "User": User}
+classes = {"Destination": Destination, "Accommodation": Accommodation, "BaseModel": BaseModel,
+            "Itinerary": Itinerary, "Activity": Activity, "User": User}
 
 
 class HBNBCommand(cmd.Cmd):
