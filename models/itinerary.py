@@ -7,6 +7,7 @@ import sqlalchemy
 from sqlalchemy import Column, String, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
 
+
 class Itinerary(BaseModel, Base):
     """Representation of an itinerary """
     if models.storage_t == 'db':
@@ -32,17 +33,41 @@ class Itinerary(BaseModel, Base):
         """initializes itinerary"""
         super().__init__(*args, **kwargs)
 
-    def add_destination(self, destination):
+    def add_destination(self, **kwargs):
         """Add a destination to the itinerary"""
-        if models.storage_t != 'db':
-            self.destinations.append(destination)
+        from models.destination import Destination
 
-    def add_accommodation(self, accommodation):
+        kwargs['itinerary_id'] = self.id
+        new_destination = Destination(**kwargs)
+
+        if models.storage_t == 'db':
+            models.storage.new(new_destination)
+            models.storage.save()
+        self.destinations.append(new_destination)
+        return new_destination
+
+    def add_accommodation(self, **kwargs):
         """Add an accommodation to the itinerary"""
-        if models.storage_t != 'db':
-            self.accommodations.append(accommodation)
+        from models.accommodation import Accommodation
 
-    def add_activity(self, activity):
+        kwargs['itinerary_id'] = self.id
+        new_accommodation = Accommodation(**kwargs)
+
+        if models.storage_t == 'db':
+            models.storage.new(new_accommodation)
+            models.storage.save()
+        self.accommodations.append(new_accommodation)
+        return new_accommodation
+
+    def add_activity(self, **kwargs):
         """Add an activity to the itinerary"""
-        if models.storage_t != 'db':
-            self.activities.append(activity)
+        from models.activity import Activity
+
+        kwargs['itinerary_id'] = self.id
+        new_activity = Activity(**kwargs)
+
+        if models.storage_t == 'db':
+            models.storage.new(new_activity)
+            models.storage.save()
+        self.activities.append(new_activity)
+        return new_activity

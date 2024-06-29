@@ -23,7 +23,3 @@ class Activity(BaseModel, Base):
         end_time = None
         location = ""
         itinerary_id = ""
-
-    def __init__(self, *args, **kwargs):
-        """initializes activity"""
-        super().__init__(*args, **kwargs)

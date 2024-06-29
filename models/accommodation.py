@@ -26,7 +26,3 @@ class Accommodation(BaseModel, Base):
         price = 0.0
         amenities = ""
         itinerary_id = ""
-
-    def __init__(self, *args, **kwargs):
-        """initializes accommodation"""
-        super().__init__(*args, **kwargs)
