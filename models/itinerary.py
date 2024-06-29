@@ -33,41 +33,37 @@ class Itinerary(BaseModel, Base):
         """initializes itinerary"""
         super().__init__(*args, **kwargs)
 
-    def add_destination(self, **kwargs):
-        """Add a destination to the itinerary"""
+    @property
+    def destination(self):
+        """getter attribute returns the list of destination instances"""
         from models.destination import Destination
+        dest_list = []
+        all_dest = models.storage_t.all(Destination)
+        for dest in all_dest.values():
+            if dest.itinerary_id == self.id:
+                dest_list.append(dest)
+        return dest_list
 
-        kwargs['itinerary_id'] = self.id
-        new_destination = Destination(**kwargs)
-
-        if models.storage_t == 'db':
-            models.storage.new(new_destination)
-            models.storage.save()
-        self.destinations.append(new_destination)
-        return new_destination
-
-    def add_accommodation(self, **kwargs):
-        """Add an accommodation to the itinerary"""
+    @property
+    def accommodation(self):
+        """getter attr reurns list of all accomodation in Destination instances"""
         from models.accommodation import Accommodation
 
-        kwargs['itinerary_id'] = self.id
-        new_accommodation = Accommodation(**kwargs)
+        accm_list = []
+        all_accm = models.storage_t.all(Accommodation)
+        for accm in all_accm.values():
+            if accm.itinerary_id == self.id:
+                acccm_list.append(accm)
+        return accm_list
 
-        if models.storage_t == 'db':
-            models.storage.new(new_accommodation)
-            models.storage.save()
-        self.accommodations.append(new_accommodation)
-        return new_accommodation
-
-    def add_activity(self, **kwargs):
-        """Add an activity to the itinerary"""
+    @property
+    def activity(self):
+        """getter attr returns all activities in Activity instance"""
         from models.activity import Activity
+        activity_list = []
+        all_act = models.storage_t.all(Activity)
+        for activ in all_act.values():
+            if activ.itinerary_id == self.id:
+                activity_list.append(activ)
+        return activity_list
 
-        kwargs['itinerary_id'] = self.id
-        new_activity = Activity(**kwargs)
-
-        if models.storage_t == 'db':
-            models.storage.new(new_activity)
-            models.storage.save()
-        self.activities.append(new_activity)
-        return new_activity
