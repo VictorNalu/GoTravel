@@ -24,6 +24,7 @@ class Festival(BaseModel, Base):
         state = relationship("State", back_populates="festivals")
         itinerary = relationship("Itinerary", back_populates="festivals")
     else:
+        festival_id = ""
         name = ""
         description = ""
         start_date = None
@@ -35,26 +36,3 @@ class Festival(BaseModel, Base):
     def __init__(self, *args, **kwargs):
         """Initializes festival"""
         super().__init__(*args, **kwargs)
-
-    @classmethod
-    def search(cls, **kwargs):
-        """Search for festivals based on criteria"""
-        query = models.storage.query(cls)
-        for key, value in kwargs.items():
-            if hasattr(cls, key):
-                if key in ['name', 'description']:
-                    query = query.filter(getattr(cls, key).ilike(f'%{value}%'))
-                elif key in ['city_id', 'state_id', 'itinerary_id']:
-                    query = query.filter(getattr(cls, key) == value)
-                elif key in ['start_date', 'end_date']:
-                    query = query.filter(getattr(cls, key) == value)
-        return query.all()
-
-    @classmethod
-    def suggest_for_itinerary(cls, city_id, start_date, end_date):
-        """Suggest festivals for an itinerary"""
-        return models.storage.query(cls).filter(
-            cls.city_id == city_id,
-            cls.start_date >= start_date,
-            cls.end_date <= end_date
-        ).all()
