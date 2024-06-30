@@ -4,19 +4,25 @@ Contains the class DBStorage
 """
 
 import models
-from models.activity import Activity
-from models.base_model import BaseModel, Base
-from models.itinerary import Itinerary
-from models.accomodation import Accomodation
-from models.destination import Destination
+from models.base_model import BaseModel
 from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.review import Review
+from models.itinerary import Itinerary
+from models.accommodation import Accommodation
+from models.activity import Activity
+from models.destination import Destination
+from models.festival import Festival
 from os import getenv
 import sqlalchemy
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 
 classes = {"Destination": Destination, "Accommodation": Accommodation, "BaseModel": BaseModel,
-            "Itinerary": Itinerary, "Activity": Activity, "User": User}
+           "Itinerary": Itinerary, "Activity": Activity, "User": User, "State": State,
+           "City": City, "Review": Review, "Festival": Festival, "Amenity": Amenity}
 
 class DBStorage:
     """interaacts with the MySQL database"""

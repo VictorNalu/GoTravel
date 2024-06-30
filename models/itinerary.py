@@ -20,6 +20,7 @@ class Itinerary(BaseModel, Base):
         accommodations = relationship("Accommodation", back_populates="itinerary")
         activities = relationship("Activity", back_populates="itinerary")
         destinations = relationship("Destination", secondary="itinerary_destinations", back_populates="itineraries")
+        festivals = relationship("Festival", back_populates="itinerary")
     else:
         itinerary_id = ""
         user_id = ""
@@ -28,6 +29,7 @@ class Itinerary(BaseModel, Base):
         accommodations = []
         activities = []
         destinations = []
+        festivals = []
 
     def __init__(self, *args, **kwargs):
         """initializes itinerary"""
@@ -67,3 +69,13 @@ class Itinerary(BaseModel, Base):
                 activity_list.append(activ)
         return activity_list
 
+    @property
+    def festival(self):
+        """getter attr returns all festivals in Festival instance"""
+        from models.festival import Festival
+        festival_list = []
+        all_fest = models.storage_t.all(Festival)
+        for fest in all_fest.values():
+            if fest.itinerary_id == self.id:
+                festival_list.append(fest)
+        return festival_list

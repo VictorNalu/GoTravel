@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+"""Defines a module that contain class for destination"""
 import models
 from models.base_model import BaseModel, Base
 from os import getenv
