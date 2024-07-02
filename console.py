@@ -53,7 +53,7 @@ class HBNBCommand(cmd.Cmd):
                         try:
                             value = float(value)
                         except:
-                            continue
+                            value = value
                 new_dict[key] = value
         return new_dict
 
