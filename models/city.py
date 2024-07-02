@@ -20,6 +20,7 @@ class City(BaseModel, Base):
         __tablename__ = 'cities'
         state_id = Column(String(60), ForeignKey('states.id'), nullable=False)
         name = Column(String(128), nullable=False)
+        activities = relationship("Activity", back_populates="city")
         festivals = relationship("Festival", secondary='city_festival',
                                   back_populates="cities")
         accommodations = relationship("Accommodation",

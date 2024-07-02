@@ -13,11 +13,15 @@ from models.review import Review
 from models.state import State
 from models.user import User
 from models.festival import Festival
+from models.itinerary import Itinerary
+from models.activity import Activity
+from models.destination import Destination
 from hashlib import md5
 
 classes = {"Amenity": Amenity, "BaseModel": BaseModel, "City": City,
            "Accommodation": Accommodation, "Review": Review, "State": State, "User": User,
-           "Festival": Festival}
+           "Festival": Festival, "Itinerary": Itinerary, "Activity": Activity,
+           "Destination": Destination}
 
 
 class FileStorage:

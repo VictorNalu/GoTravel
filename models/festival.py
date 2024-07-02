@@ -18,10 +18,10 @@ class Festival(BaseModel, Base):
         start_date = Column(Date, nullable=False)
         end_date = Column(Date, nullable=False)
         city_id = Column(String(60), ForeignKey('cities.id'), nullable=False)
-        """itinerary_id = Column(String(60), ForeignKey('itineraries.id'), nullable=True)"""
+        itinerary_id = Column(String(60), ForeignKey('itineraries.id'), nullable=True)
         cities = relationship("City", secondary='city_festival',
                             back_populates="festivals")
-        """itinerary = relationship("Itinerary", back_populates="festivals")"""
+        itinerary = relationship("Itinerary", back_populates="festivals")
         __table_args__ = (
             CheckConstraint('end_date >= start_date', name='check_end_date_after_start_date'),
         )

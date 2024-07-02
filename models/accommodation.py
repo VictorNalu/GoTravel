@@ -33,6 +33,8 @@ class Accommodation(BaseModel, Base):
         price = Column(Integer, nullable=False, default=0)
         check_in = Column(Time, nullable=True)
         check_out = Column(Time, nullable=True)
+        itinerary_id = Column(String(60), ForeignKey('itineraries.id'), nullable=True)
+        itinerary = relationship("Itinerary", back_populates="accommodations")
         reviews = relationship("Review",
                                backref="accommodation",
                                cascade="all, delete, delete-orphan")

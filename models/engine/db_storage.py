@@ -12,6 +12,9 @@ from models.review import Review
 from models.state import State
 from models.user import User
 from models.festival import Festival
+from models.itinerary import Itinerary
+from models.activity import Activity
+from models.destination import Destination
 from os import getenv
 import sqlalchemy
 from sqlalchemy import create_engine
@@ -19,7 +22,8 @@ from sqlalchemy.orm import scoped_session, sessionmaker
 
 classes = {"Amenity": Amenity, "City": City,
            "Accommodation": Accommodation, "Review": Review, "State": State, "User": User,
-           "Festival": Festival}
+           "Festival": Festival, "Itinerary": Itinerary, "Activity": Activity,
+           "Destination": Destination}
 
 class DBStorage:
     """interaacts with the MySQL database"""
