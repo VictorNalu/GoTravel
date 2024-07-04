@@ -4,22 +4,23 @@
 import cmd
 from datetime import datetime
 import models
-from models.base_model import BaseModel
-from models.user import User
-from models.state import State
-from models.city import City
 from models.amenity import Amenity
-from models.review import Review
-from models.itinerary import Itinerary
+from models.base_model import BaseModel
+from models.city import City
 from models.accommodation import Accommodation
+from models.review import Review
+from models.state import State
+from models.user import User
+from models.festival import Festival
+from models.itinerary import Itinerary
 from models.activity import Activity
 from models.destination import Destination
-from models.festival import Festival
 import shlex  # for splitting the line along spaces except in double quotes
 
-classes = {"Destination": Destination, "Accommodation": Accommodation, "BaseModel": BaseModel,
-           "Itinerary": Itinerary, "Activity": Activity, "User": User, "State": State,
-           "City": City, "Review": Review, "Festival": Festival, "Amenity": Amenity}
+classes = {"Amenity": Amenity, "BaseModel": BaseModel, "City": City,
+           "Accommodation": Accommodation, "Review": Review, "State": State, "User": User,
+           "Festival": Festival, "Itinerary": Itinerary, "Activity": Activity,
+           "Destination": Destination}
 
 
 class HBNBCommand(cmd.Cmd):
@@ -47,7 +48,8 @@ class HBNBCommand(cmd.Cmd):
                 key = kvp[0]
                 value = kvp[1]
                 if value[0] == value[-1] == '"':
-                    value = shlex.split(value)[0].replace('_', ' ')
+                    value = shlex.split(value)[0]
+                    value = value.replace('_', ' ')
                 else:
                     try:
                         value = int(value)
@@ -55,7 +57,7 @@ class HBNBCommand(cmd.Cmd):
                         try:
                             value = float(value)
                         except:
-                            continue
+                            value = value
                 new_dict[key] = value
         return new_dict
 
@@ -141,7 +143,7 @@ class HBNBCommand(cmd.Cmd):
                 if k in models.storage.all():
                     if len(args) > 2:
                         if len(args) > 3:
-                            if args[0] == "Place":
+                            if args[0] == "Accommodation":
                                 if args[2] in integers:
                                     try:
                                         args[3] = int(args[3])

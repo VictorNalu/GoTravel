@@ -4,25 +4,26 @@ Contains the class DBStorage
 """
 
 import models
-from models.base_model import BaseModel
-from models.user import User
-from models.state import State
-from models.city import City
 from models.amenity import Amenity
-from models.review import Review
-from models.itinerary import Itinerary
+from models.base_model import BaseModel, Base
+from models.city import City
 from models.accommodation import Accommodation
+from models.review import Review
+from models.state import State
+from models.user import User
+from models.festival import Festival
+from models.itinerary import Itinerary
 from models.activity import Activity
 from models.destination import Destination
-from models.festival import Festival
 from os import getenv
 import sqlalchemy
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 
-classes = {"Destination": Destination, "Accommodation": Accommodation, "BaseModel": BaseModel,
-           "Itinerary": Itinerary, "Activity": Activity, "User": User, "State": State,
-           "City": City, "Review": Review, "Festival": Festival, "Amenity": Amenity}
+classes = {"Amenity": Amenity, "City": City,
+           "Accommodation": Accommodation, "Review": Review, "State": State, "User": User,
+           "Festival": Festival, "Itinerary": Itinerary, "Activity": Activity,
+           "Destination": Destination}
 
 class DBStorage:
     """interaacts with the MySQL database"""
@@ -31,17 +32,17 @@ class DBStorage:
 
     def __init__(self):
         """Instantiate a DBStorage object"""
-        HBNB_MYSQL_USER = getenv('HBNB_MYSQL_USER')
-        HBNB_MYSQL_PWD = getenv('HBNB_MYSQL_PWD')
-        HBNB_MYSQL_HOST = getenv('HBNB_MYSQL_HOST')
-        HBNB_MYSQL_DB = getenv('HBNB_MYSQL_DB')
-        HBNB_ENV = getenv('HBNB_ENV')
+        GOTRAVEL_MYSQL_USER = getenv('GOTRAVEL_MYSQL_USER')
+        GOTRAVEL_MYSQL_PWD = getenv('GOTRAVEL_MYSQL_PWD')
+        GOTRAVEL_MYSQL_HOST = getenv('GOTRAVEL_MYSQL_HOST')
+        GOTRAVEL_MYSQL_DB = getenv('GOTRAVEL_MYSQL_DB')
+        GOTRAVEL_ENV = getenv('GOTRAVEL_ENV')
         self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'.
-                                      format(HBNB_MYSQL_USER,
-                                             HBNB_MYSQL_PWD,
-                                             HBNB_MYSQL_HOST,
-                                             HBNB_MYSQL_DB))
-        if HBNB_ENV == "test":
+                                      format(GOTRAVEL_MYSQL_USER,
+                                             GOTRAVEL_MYSQL_PWD,
+                                             GOTRAVEL_MYSQL_HOST,
+                                             GOTRAVEL_MYSQL_DB))
+        if GOTRAVEL_ENV == "test":
             Base.metadata.drop_all(self.__engine)
 
     def all(self, cls=None):

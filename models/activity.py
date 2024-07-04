@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+"""defines model activity class"""
 import models
 from models.base_model import BaseModel, Base
 from os import getenv
@@ -13,9 +15,11 @@ class Activity(BaseModel, Base):
         description = Column(String(1024), nullable=True)
         start_time = Column(DateTime, nullable=True)
         end_time = Column(DateTime, nullable=True)
-        location = Column(String(128), nullable=True)
+        city_id = Column(String(60), ForeignKey('cities.id'), nullable=False)
         itinerary_id = Column(String(60), ForeignKey('itineraries.id'), nullable=False)
         itinerary = relationship("Itinerary", back_populates="activities")
+        city = relationship("City", back_populates="activities")
+
     else:
         name = ""
         description = ""

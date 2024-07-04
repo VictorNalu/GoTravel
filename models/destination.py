@@ -13,12 +13,11 @@ class Destination(BaseModel, Base):
         __tablename__ = 'destinations'
         name = Column(String(128), nullable=False)
         description = Column(String(1024), nullable=True)
-        location = Column(String(128), nullable=False)
-        itineraries = relationship("Itinerary", secondary="itinerary_destinations", back_populates="destinations")
+        itineraries = relationship("Itinerary", secondary="itinerary_destinations",
+                                   back_populates="destinations")
     else:
         name = ""
         description = ""
-        location = ""
 
     def __init__(self, *args, **kwargs):
         """initializes destination"""
