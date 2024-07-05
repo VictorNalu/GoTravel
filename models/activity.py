@@ -4,7 +4,7 @@ import models
 from models.base_model import BaseModel, Base
 from os import getenv
 import sqlalchemy
-from sqlalchemy import Column, String, DateTime, ForeignKey
+from sqlalchemy import Column, String, ForeignKey, DateTime, CheckConstraint
 from sqlalchemy.orm import relationship
 
 class Activity(BaseModel, Base):
@@ -19,6 +19,9 @@ class Activity(BaseModel, Base):
         itinerary_id = Column(String(60), ForeignKey('itineraries.id'), nullable=False)
         itinerary = relationship("Itinerary", back_populates="activities")
         city = relationship("City", back_populates="activities")
+        __table_args__ = (
+            CheckConstraint('end_time >= start_time', name='check_end_time_after_start_time'),
+        )
 
     else:
         name = ""

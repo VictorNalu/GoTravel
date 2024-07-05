@@ -4,7 +4,7 @@ import models
 from models.base_model import BaseModel, Base
 from os import getenv
 import sqlalchemy
-from sqlalchemy import Column, String, ForeignKey, Date
+from sqlalchemy import Column, String, ForeignKey, DateTime, CheckConstraint
 from sqlalchemy.orm import relationship
 from sqlalchemy import CheckConstraint
 
@@ -15,8 +15,8 @@ class Festival(BaseModel, Base):
         __tablename__ = 'festivals'
         name = Column(String(128), nullable=False)
         description = Column(String(1024))
-        start_date = Column(Date, nullable=False)
-        end_date = Column(Date, nullable=False)
+        start_date = Column(DateTime, nullable=False)
+        end_date = Column(DateTime, nullable=False)
         city_id = Column(String(60), ForeignKey('cities.id'), nullable=False)
         itinerary_id = Column(String(60), ForeignKey('itineraries.id'), nullable=True)
         cities = relationship("City", secondary='city_festival',
