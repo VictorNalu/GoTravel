@@ -86,7 +86,7 @@ p {
 }
 
 .btn1 {
-  background-color: #fff;
+  background-color: #FDFFF9;
   color: #6ab806;
   font-size: 1.2rem;
   padding: 1rem 2.5rem;
@@ -97,12 +97,12 @@ p {
 
 .btn1:hover {
   background-color: #6ab806;
-  color: #fff;
+  color: #FDFFF9;
 }
 
 .btn2 {
   background-color: #6ab806;
-  color: #fff;
+  color: #FDFFF9;
   font-size: 1.2rem;
   padding: 1rem 2.2rem;
   border-radius: 5px;
