@@ -5,23 +5,29 @@ Contains the FileStorage class
 
 import json
 import models
-from models.amenity import Amenity
-from models.base_model import BaseModel
-from models.city import City
 from models.accommodation import Accommodation
+from models.activity import Activity
+from models.amenity import Amenity
+from models.base_model import BaseModel, Base
+from models.city import City
+from models.culturalevent import CulturalEvent
+from models.destination import Destination
+from models.expense import Expense
+from models.itinerary import Itinerary
 from models.review import Review
 from models.state import State
+from models.transportation import Transportation
+from models.trip import Trip
 from models.user import User
-from models.festival import Festival
-from models.itinerary import Itinerary
-from models.activity import Activity
-from models.destination import Destination
 from hashlib import md5
 
-classes = {"Amenity": Amenity, "BaseModel": BaseModel, "City": City,
-           "Accommodation": Accommodation, "Review": Review, "State": State, "User": User,
-           "Festival": Festival, "Itinerary": Itinerary, "Activity": Activity,
-           "Destination": Destination}
+classes = {"Accommodation": Accommodation, "Activity": Activity,
+           "Amenity": Amenity, "BaseModel": BaseModel, "City": City,
+           "CulturalEvent": CulturalEvent, "Destination": Destination,
+           "Expense": Expense, "Itinerary": Itinerary, "Review": Review,
+           "State": State, "Transportation": Transportation, "User": User,
+           "Trip": Trip
+           }
 
 
 class FileStorage:

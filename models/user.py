@@ -1,26 +1,38 @@
 #!/usr/bin/python3
-""" holds class User"""
+""" Defines a User class model"""
 
 import models
 from models.base_model import BaseModel, Base
 from os import getenv
 import sqlalchemy
-from sqlalchemy import Column, String
+from sqlalchemy import Column, String, Table, ForeignKey
 from sqlalchemy.orm import relationship
 from hashlib import md5
 
+user_trip = Table(
+        'user_trip', Base.metadata,
+        Column('user_id', String(60), ForeignKey('users.id'),
+               primary_key=True),
+        Column('trip_id', String(60), ForeignKey('trips.id'),
+               primary_key=True)
+)
+
 
 class User(BaseModel, Base):
-    """Representation of a user """
+    """
+    Represents a user of the travel planning application.
+    Stores user authentication information and links to their trips.
+    """
     if models.storage_t == 'db':
         __tablename__ = 'users'
         email = Column(String(128), nullable=False)
         password = Column(String(128), nullable=False)
         first_name = Column(String(128), nullable=True)
         last_name = Column(String(128), nullable=True)
-        accommodations = relationship("Accommodation", backref="user")
-        itineraries = relationship("Itinerary", back_populates="user")
-        reviews = relationship("Review", backref="user")
+        reviews = relationship("Review", back_populates="user")
+        trips = relationship("Trip", secondary=user_trip,
+                             back_populates="user",
+                             cascade="all, delete")
     else:
         email = ""
         password = ""

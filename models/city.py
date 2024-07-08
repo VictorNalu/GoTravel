@@ -4,14 +4,8 @@ import models
 from models.base_model import BaseModel, Base
 from os import getenv
 import sqlalchemy
-from sqlalchemy import Column, String, ForeignKey, Date, Table
+from sqlalchemy import Column, String, ForeignKey, DateTime, Table
 from sqlalchemy.orm import relationship
-
-
-city_festival = Table('city_festival', Base.metadata,
-        Column('city_id', String(60), ForeignKey('cities.id')),
-        Column('festival_id', String(60), ForeignKey('festivals.id'))
-        )
 
 
 class City(BaseModel, Base):
@@ -21,11 +15,10 @@ class City(BaseModel, Base):
         state_id = Column(String(60), ForeignKey('states.id'), nullable=False)
         name = Column(String(128), nullable=False)
         activities = relationship("Activity", back_populates="city")
-        festivals = relationship("Festival", secondary='city_festival',
-                                  back_populates="cities")
-        accommodations = relationship("Accommodation",
-                              backref="cities",
-                              cascade="all, delete, delete-orphan")
+        cultural_events = relationship("CulturalEvent",
+                                       back_populates="city")
+        destinations = relationship("Destination", back_populates="city")
+        state = relationship("State", back_populates="cities")
     else:
         state_id = ""
         name = ""
