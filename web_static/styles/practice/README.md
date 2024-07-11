@@ -4,7 +4,7 @@ Welcome to GoTravel! This is a project aimed at creating a travel planning and b
 
 ## Features
 
-- Search for destinations based on preferences
+- Search for destinations based on the preferences
 - View detailed information about each destination
 - Find and compare flights from different airlines
 - Browse and book accommodations from a wide range of options
