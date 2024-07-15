@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """ Defines a User class model"""
 
-import models
 from models.base_model import BaseModel, Base
+import models
 from os import getenv
 import sqlalchemy
 from sqlalchemy import Column, String, Table, ForeignKey
@@ -23,8 +23,8 @@ class User(BaseModel, Base):
     Represents a user of the travel planning application.
     Stores user authentication information and links to their trips.
     """
+    __tablename__ = 'users'
     if models.storage_t == 'db':
-        __tablename__ = 'users'
         email = Column(String(128), nullable=False)
         password = Column(String(128), nullable=False)
         first_name = Column(String(128), nullable=True)
