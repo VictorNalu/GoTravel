@@ -26,5 +26,4 @@ To get started with GoTravel, follow these steps:
 4. Start the server: `npm start`
 
 ## Usage
-
 Once the server is running, you can access the GoTravel platform by opening your web browser and navigating to `http://localhost:3000`. From there, you can create an account, search for destinations, and start planning your next adventure!
