@@ -5,7 +5,7 @@ Contains the FileStorage class
 
 import json
 import models
-"""from models.accommodation import Accommodation
+from models.accommodation import Accommodation
 from models.activity import Activity
 from models.amenity import Amenity
 from models.base_model import BaseModel, Base
@@ -17,7 +17,7 @@ from models.itinerary import Itinerary
 from models.review import Review
 from models.state import State
 from models.transportation import Transportation
-from models.trip import Trip"""
+from models.trip import Trip
 from models.user import User
 from hashlib import md5
 

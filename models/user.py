@@ -24,20 +24,14 @@ class User(BaseModel, Base):
     Stores user authentication information and links to their trips.
     """
     __tablename__ = 'users'
-    if models.storage_t == 'db':
-        email = Column(String(128), nullable=False)
-        password = Column(String(128), nullable=False)
-        first_name = Column(String(128), nullable=True)
-        last_name = Column(String(128), nullable=True)
-        reviews = relationship("Review", back_populates="user")
-        trips = relationship("Trip", secondary=user_trip,
-                             back_populates="user",
-                             cascade="all, delete")
-    else:
-        email = ""
-        password = ""
-        first_name = ""
-        last_name = ""
+    email = Column(String(128), nullable=False)
+    password = Column(String(128), nullable=False)
+    first_name = Column(String(128), nullable=True)
+    last_name = Column(String(128), nullable=True)
+    reviews = relationship("Review", back_populates="user")
+    trips = relationship("Trip", secondary=user_trip,
+                         back_populates="user",
+                         cascade="all, delete")
 
     def __init__(self, *args, **kwargs):
         """initializes user"""

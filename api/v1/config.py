@@ -3,7 +3,7 @@ import os
 
 # General Flask settings
 DEBUG = True
-SECRET_KEY = 'c64a9fc5289651846ff1915dd2ff2bdb4d58f0d7477ce642'
+SECRET_KEY = 'cdd754e6523f713e48fd617055c732b1a57f48af72bea65e'
 
 # Database settings
 SQLALCHEMY_DATABASE_URI = 'mysql+mysqldb://root:gotravel_dev_pwd@localhost/gotravel_dev'
