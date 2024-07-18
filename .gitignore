@@ -1,1 +1,5 @@
 .vercel
+setup_mysql_dev.sql
+setup_mysql_test.sql
+requirement.txt
+secret.py
