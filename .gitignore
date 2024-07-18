@@ -1,5 +1,6 @@
 .vercel
-setup_mysql_dev.sql
-setup_mysql_test.sql
-requirement.txt
-secret.py
+.sql
+.txt
+secret
+err_env
+__pycache__/
