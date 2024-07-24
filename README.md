@@ -1,6 +1,6 @@
 # GoTravel
 
-![LandingPage](<static/images/Screenshot (46).png>)
+![LandingPage](<Screenshot (46).png>)
 
 Welcome to GoTravel! This is a team project for our ALX Software Engineering Foundation Portfolio Project.
 
