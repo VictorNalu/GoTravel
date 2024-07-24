@@ -1,12 +1,13 @@
 # GoTravel
 
-![alt text](<static/images/Screenshot (46).png>)
+![LandingPage](<static/images/Screenshot (46).png>)
 
 Welcome to GoTravel! This is a team project for our ALX Software Engineering Foundation Portfolio Project.
 
 > GoTravel is a revolutionary app that connects you with the best travel experiences in Nigeria. It aims to simplify the process of planning vacations by offering users an easy-to-use platform for searching, organizing, and managing their travel plans. Users can view destinations, accommodations, and activities, create itineraries, and possibly even book travel services. It combines elements of travel inspiration, planning, and management in a cohesive, user-friendly interface.
 
 Link to Deployed Page: [Gotravel](https://gotravelnig.me/)
+
 Link to Project Blog Post: [BlogPost](https://medium.com/@victorchinalurumogu/gotravel-a-nigerian-travel-planner-web-app-ba10176be634)
 
 ## Features
