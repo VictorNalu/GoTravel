@@ -34,15 +34,6 @@ def teardown_db(exception):
     """
     storage.close()
 
-@app.errorhandler(404)
-def handle_404(exception):
-    """
-    Handles 404 errors
-    """
-    description = exception.description
-    message = {'error': description}
-    return make_response(jsonify(message), 404)
-
 @app.errorhandler(400)
 def handle_400(exception):
     """
