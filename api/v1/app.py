@@ -69,11 +69,6 @@ def root_home():
     """route for root home page"""
     return render_template('index.html')
 
-@app.route('/forgot_password')
-def forgot_password():
-    """Route for forgot password"""
-    return render_template('forgot_password.html')
-
 def create_app():
     app.config.from_pyfile('config.py')
     return app
