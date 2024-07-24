@@ -34,15 +34,6 @@ def teardown_db(exception):
     """
     storage.close()
 
-@app.errorhandler(404)
-def handle_404(exception):
-    """
-    Handles 404 errors
-    """
-    description = exception.description
-    message = {'error': description}
-    return make_response(jsonify(message), 404)
-
 @app.errorhandler(400)
 def handle_400(exception):
     """
@@ -77,6 +68,11 @@ def setup_global_errors():
 def root_home():
     """route for root home page"""
     return render_template('index.html')
+
+@app.route('/forgot_password')
+def forgot_password():
+    """Route for forgot password"""
+    return render_template('forgot_password.html')
 
 def create_app():
     app.config.from_pyfile('config.py')
